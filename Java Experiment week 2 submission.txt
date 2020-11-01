@@ -1,0 +1,147 @@
+3. Design a class called Student having data members like student name and
+roll number and method called show to display the name and roll number.
+Derive a class called Test from student class having three subjects’ marks as a
+data members and method named show_marks to display the marks. Create an
+interface called Sports contains constant sports marks and method
+show_sportswt. Derive a class Result from Test class and implement the
+interface Sports .Calculate total marks by considering sports marks. Then
+display the total in Result class.
+
+import java.util.*;
+interface Sports
+{
+	int sports_marks=3;
+	void show_sportswt();
+}
+
+class Student
+{
+	String student_name;
+	int roll_no;
+	void read()
+	{
+		Scanner reader=new Scanner(System.in);
+		System.out.println("Enter Student name:");
+		student_name=reader.next();
+		System.out.println("Enter Student Roll number:");
+		roll_no=reader.nextInt();
+	}
+	void show()
+	{
+		System.out.println("Student name is "+student_name+" and student roll number is "+roll_no);
+	}
+}
+
+class Test extends Student
+{
+    int marks1;
+    int marks2;
+    int marks3;
+    void read()
+    {
+    	super.read();
+    	Scanner reader=new Scanner(System.in);
+    	System.out.println("Enter marks in subject 1:");
+    	marks1=reader.nextInt();
+    	System.out.println("Enter marks in subject 2:");
+    	marks2=reader.nextInt();
+    	System.out.println("Enter marks in subject 3:");
+    	marks3=reader.nextInt();
+    }
+    void show_marks()
+    {
+    	System.out.println("Marks in Subject 1 is "+marks1+" ,marks in Subject 2 is "+marks2+" ,marks in subject 3 is "+marks3);
+    }
+}
+
+class Result extends Test implements Sports
+{
+	int total_marks;
+	public void show_sportswt()
+	{
+        System.out.println("Marks in Sports is "+sports_marks);		
+	}
+	void display()
+	{
+		total_marks=marks1+marks2+marks3+sports_marks;
+		System.out.println("Total marks is "+total_marks);
+	}
+}
+
+public class Experiment3StudentResult{
+
+	public static void main(String[] args) {
+		Result r1=new Result();
+		r1.read();
+		r1.show();
+		r1.show_marks();
+		r1.show_sportswt();
+		r1.display();
+  }
+}
+
+4. Create a class as Student. Write a program in Java to display the names and
+roll numbers of students. Create an array of 10 students and initialize the array
+with user input. Handle ArrayIndexOutOfBoundsExeption, so that any such
+problem doesn’t cause illegal termination of program. Read a character from
+user and display the student names starting with given character.
+
+import java.util.*;
+class StudentA
+{
+	protected String name;
+	protected int roll_no;
+	void read()
+	{
+		Scanner reader=new Scanner(System.in);
+		System.out.println("Enter Student name");
+		name=reader.next();
+		System.out.println("Enter Student Roll number");
+		roll_no=reader.nextInt();
+	}
+	String display()
+	{
+		return name;
+
+	}
+}
+
+public class Experiment4StudentArray {
+
+	public static void main(String[] args) throws  ArrayIndexOutOfBoundsException
+	{
+		Scanner reader=new Scanner(System.in);
+		try
+		{
+		System.out.println("Enter number of Students");
+		int n=reader.nextInt();
+		StudentA s[]=new StudentA[10];
+		int i;
+		for(i=0;i<n;i++)
+		{
+		    s[i]=new StudentA();
+			s[i].read();
+
+		}
+		System.out.println("Enter the starting character ");
+		String start=reader.next();
+		start=start.toLowerCase();
+		for(i=0;i<s.length;i++)
+		{
+			String getname=s[i].display();
+			getname=getname.toLowerCase();
+			if(getname.startsWith(start))
+			{
+			System.out.println("Student Name is "+s[i].name+" Roll number is "+s[i].roll_no);
+		    }
+		}
+	}
+		catch(ArrayIndexOutOfBoundsException e)
+		{
+			System.out.println("Exception "+e+" occured");
+		}
+	}
+}
+
+
+
