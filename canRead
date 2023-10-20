@@ -1,0 +1,20 @@
+// Java program to demonstrate
+// canRead() method of File Class
+
+import java.io.*;
+
+public class solution {
+	public static void main(String args[])
+	{
+
+		// Get the file
+		File f = new File("F:\\program.txt");
+
+		// Check if the specified file
+		// can be read or not
+		if (f.canRead())
+			System.out.println("Can be Read");
+		else
+			System.out.println("Cannot be Read");
+	}
+}
